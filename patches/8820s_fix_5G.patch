@@ -1,0 +1,13 @@
+diff --git a/target/linux/ramips/dts/mt7621_zte_e8820s.dts b/target/linux/ramips/dts/mt7621_zte_e8820s.dts
+index a29fe09b0..1c34a5adb 100644
+--- a/target/linux/ramips/dts/mt7621_zte_e8820s.dts
++++ b/target/linux/ramips/dts/mt7621_zte_e8820s.dts
+@@ -98,6 +98,8 @@
+ 
+ &pcie {
+ 	status = "okay";
++	reset-gpios = <&gpio 19 GPIO_ACTIVE_LOW>,
++		      <&gpio 4 GPIO_ACTIVE_LOW>;
+ };
+ 
+ &pcie0 {
