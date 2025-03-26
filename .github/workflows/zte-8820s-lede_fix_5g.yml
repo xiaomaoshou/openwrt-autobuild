@@ -1,4 +1,4 @@
-name: zte-8820s-lede-hwnat
+name: zte-8820s-lede-hwnat_fix_5G
 
 on:
   workflow_dispatch:
