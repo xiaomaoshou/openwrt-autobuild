@@ -15,6 +15,7 @@ env:
   FIX_V2DAT: fix_v2dat.sh
   FEEDS_CONF: feeds.conf.default
   SYS_PATCH: patches/8820s_fix_5G.patch
+  SYS_PATCH_WIFI: patches/wifi_auto_on.patch
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
@@ -132,12 +133,17 @@ jobs:
         mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}
         prefix: ${{ env.OPENWRT_PATH }}
 
-    - name: Apply Patch（应用修复5G补丁）
+    - name: Apply Patch（应用修复5G补丁,自动打开wifi补丁）
       run: |
         [ -e $SYS_PATCH ] && mv $SYS_PATCH $OPENWRT_PATH/modification.patch
         cd $OPENWRT_PATH
         patch -p1 -N < modification.patch
         rm  modification.patch 
+        [ -e $SYS_PATCH_WIFI ] && mv $SYS_PATCH_WIFI $OPENWRT_PATH/modification.patch
+        cd $OPENWRT_PATH
+        patch -p1 -N < modification.patch
+        rm  modification.patch 
+        
         
 
     - name: Compile Firmware(开始编译固件)
