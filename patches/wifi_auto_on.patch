@@ -1,0 +1,15 @@
+diff --git a/package/base-files/files/etc/rc.local b/package/base-files/files/etc/rc.local
+index 56394773c..74da75319 100644
+--- a/package/base-files/files/etc/rc.local
++++ b/package/base-files/files/etc/rc.local
+@@ -1,4 +1,9 @@
+ # Put your custom commands here that should be executed once
+ # the system init finished. By default this file does nothing.
+-
++ifconfig ra0 up   #2G
++ifconfig rai0 up  #5G
++ifconfig apcli0 up   #2G
++ifconfig apclii0 up  #5G
++brctl addif br-lan rai0 #5G
++brctl addif br-lan ra0 #2G
+ exit 0
