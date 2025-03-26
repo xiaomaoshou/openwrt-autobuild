@@ -19,7 +19,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: LEDE_for_zte_8820s
+  FIRMWARE_TAG: LEDE_for_zte_8820s_fix_5G
   TZ: Asia/Shanghai
 
 jobs:
@@ -190,12 +190,12 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           **This is OpenWrt(LEDE) Firmware ${{ env.FIRMWARE_TAG }}**
-          ### 📒 固件信息(8820s闭源固件)
-          - LEDE-zte-8820s带hwnat的固件
+          ### 📒 固件信息(8820s闭源固件,修复5G)
+          - LEDE-zte-8820s带hwnat的固件_fix_5G
           - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 lede 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
-          - 🌐 默认地址: 192.168.3.1
+          - 🌐 默认地址: 192.168.1.1
           - 🔑 默认密码: password
           ### 🧊 固件版本
           - 固件编译前最后一次➦[主源码](${{ env.REPO_URL }})更新记录
