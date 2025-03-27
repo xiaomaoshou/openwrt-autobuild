@@ -136,13 +136,12 @@ jobs:
     - name: Apply Patch（应用修复5G补丁,自动打开wifi补丁）
       run: |
         [ -e $SYS_PATCH ] && mv $SYS_PATCH $OPENWRT_PATH/modification.patch
+        [ -e $SYS_PATCH_WIFI ] && mv $SYS_PATCH_WIFI $OPENWRT_PATH/modification2.patch
         cd $OPENWRT_PATH
         patch -p1 -N < modification.patch
+        patch -p1 -N < modification2.patch
         rm  modification.patch 
-        [ -e $SYS_PATCH_WIFI ] && mv $SYS_PATCH_WIFI $OPENWRT_PATH/modification.patch
-        cd $OPENWRT_PATH
-        patch -p1 -N < modification.patch
-        rm  modification.patch 
+        rm  modification2.patch 
         
         
 
