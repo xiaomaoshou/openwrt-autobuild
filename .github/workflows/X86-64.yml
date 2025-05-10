@@ -84,6 +84,8 @@ jobs:
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
+        git clone https://github.com/kob/nf_deaf-openwrt.git package/kernel/nf_deaf
+        ls package/kernel/nf_deaf -lh
 
     - name: Generate Variables(生成变量)
       run: |
